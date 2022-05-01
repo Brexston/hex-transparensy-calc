@@ -4,6 +4,7 @@
             <div class="calculator__color-input" :class="{error: erorrInput}">
                 <input type="text" autofocus v-model="color" placeholder="#FDC420">
             </div>
+            <div class="calculator__color-copy" :class="{active: copyBtn}" @click="copyColor">Скопировать</div>
         </div>
         <div class="calculator__percent">
             <div class="calculator__percent-item" :class="{active: percent == this.value}"  @click="this.value = percent" v-for="percent in percentList" :key="percent">{{percent}}</div>
@@ -31,7 +32,8 @@ export default {
             color: '',
             value: 100,
             percentList: ['10','20','30','40','50','60','70','80','90'],
-            erorrInput: false
+            erorrInput: false,
+            copyBtn: false
         }
     },
 
@@ -39,6 +41,7 @@ export default {
         calculateOpacity(percent) {
             if(this.color.length >= 4 && this.color.startsWith("#")) {
                 this.erorrInput = false
+                this.copyBtn = true
 
                 const alpha = Math.round(percent / 100 * 255)
                 const hex = (alpha + 0x10000).toString(16).substr(-2)
@@ -58,8 +61,13 @@ export default {
             }
             else {
                 this.erorrInput = true
+                 this.copyBtn = false
             }
-        }
+        },
+		copyColor(event) {
+            event.target.previousElementSibling.querySelector('input').select()
+            document.execCommand("copy")
+		},
         
     }
 }
@@ -75,8 +83,19 @@ export default {
         margin: 0 auto 8px
         background: $blue
         +flex(center,center)
+        flex-direction: column
         position: relative
         border: 1px solid $silver
+        overflow: hidden
+        &::before
+            content: ''
+            position: absolute
+            inset: 0
+            width: 100%
+            height: 100%
+            border-radius: 10px
+            background: url(@/assets/bg.png)
+            z-index: -1
         &-input
             background: $white
             max-width: 150px
@@ -103,15 +122,19 @@ export default {
                 border: 0
                 width: 150px
                 height: 100%
-        &::before
-            content: ''
+        &-copy
             position: absolute
-            inset: 0
-            width: 100%
-            height: 100%
-            border-radius: 10px
-            background: url(@/assets/bg.png)
-            z-index: -1
+            bottom: 6px
+            background: $yellow
+            padding: 3px 10px
+            border-radius: 6px
+            font-size: 14px
+            cursor: pointer
+            transition: 0.5s
+            transform: translateY(130%)
+            &.active
+                transform: none
+
     &__percent 
         max-width: 500px
         width: 100%
