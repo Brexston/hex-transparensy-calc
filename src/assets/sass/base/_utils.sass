@@ -2,6 +2,8 @@
 $white: #fff
 $black: #000
 $yellow: #FDC420
+$silver: #eee
+$blue: #5f8bbf
 
 // Миксины
 =text-style($font-size:14px,$line-height:normal)
@@ -12,7 +14,16 @@ $yellow: #FDC420
     display: flex
     justify-content: $justify-content
     align-items: $align-items
-    
+=Vscroll()
+    &::-webkit-scrollbar
+        width: 6px
+        cursor: pointer
+        appearance: none
+        -webkit-appearance: none
+    &::-webkit-scrollbar-track
+        background: $silver
+    &::-webkit-scrollbar-thumb
+        background-color: $blue
 // Анимация светлячков
 $quantity: 15
 
@@ -20,7 +31,7 @@ $quantity: 15
   $steps: random(12) + 16
   $rotationSpeed: random(10) + 15s
   
-  .firefly:nth-child(#{$i})
+  .firefly__item:nth-child(#{$i})
     animation-name: move#{$i}
     &::before
       animation-duration: #{$rotationSpeed}

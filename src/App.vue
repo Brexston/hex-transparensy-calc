@@ -1,24 +1,26 @@
 <template>
 	<div class="layout">
 		<Header/>
+		<Calculator/>
 		<Footer/>
-		<AnimateBg/>
 	</div>
+	<AnimateBg/>
 
 </template>
 
 <script>
 import Header from './components/Header'
+import Calculator from './components/Calculator'
 import Footer from './components/Footer'
 import AnimateBg from './components/AnimateBg'
 
 
 export default {
   name: 'App',
-  components: { Header, Footer, AnimateBg }
+  components: { Header, Calculator, Footer, AnimateBg }
 }
 </script>
-
+<style src="@vueform/slider/themes/default.css"></style>
 <style lang="sass">
 @import '@/assets/sass/main.sass'
 

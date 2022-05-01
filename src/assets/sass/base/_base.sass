@@ -1,7 +1,8 @@
 body
     margin: 0
-    background: radial-gradient(ellipse at top,#00b7b7 0,#000 100%)
+    background: radial-gradient(ellipse at top,#7e79c5 0,#000 100%)
     height: 100vh
+    +Vscroll
     font:
         family: 'CeraPro'
         weight: 500
@@ -9,6 +10,12 @@ a
     text-decoration: none
 input,textarea
     box-sizing: border-box
+    padding: 0 20px
+    text-align: center
+    &:focus
+        outline: none
+    &::-webkit-outer-spin-button, &::-webkit-inner-spin-button
+        -webkit-appearance: none
 button
     padding: 0
     border: none

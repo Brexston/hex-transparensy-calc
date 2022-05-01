@@ -9,7 +9,9 @@
 .header
     &__title
         margin: 0 0 32px
-        text-align: center
-        font-weight: 500
+        text:
+            align: center
+            transform: uppercase
+        +text-style(26px)
     
 </style>
