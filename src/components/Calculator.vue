@@ -77,7 +77,6 @@ export default {
 .calculator
     &__color
         border-radius: 10px
-        max-width: 500px
         width: 100%
         height: 120px
         margin: 0 auto 8px
@@ -136,7 +135,6 @@ export default {
                 transform: none
 
     &__percent 
-        max-width: 500px
         width: 100%
         margin: 0 auto 24px
         display: flex

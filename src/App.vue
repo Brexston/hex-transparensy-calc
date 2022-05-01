@@ -20,17 +20,18 @@ export default {
   components: { Header, Calculator, Footer, AnimateBg }
 }
 </script>
-<style src="@vueform/slider/themes/default.css"></style>
+
 <style lang="sass">
 @import '@/assets/sass/main.sass'
 
 .layout
 	background: $white
 	width: 100%
-	max-width: 600px
+	max-width: 700px
 	border-radius: 25px
 	margin: 50px auto
-	padding: 45px 25px
+	padding: 45px 80px
+	box-sizing: border-box 
 	box-shadow: 0 5px 11px rgb(0 0 0 / 10%)
 	z-index: 5
 	position: relative
