@@ -1,6 +1,6 @@
 <template>
     <div class="firefly">
-        <span v-for="i in 15" :key="i" class="firefly__item"></span>
+        <span v-for="i in 25" :key="i" class="firefly__item"></span>
     </div>
 </template>
 
@@ -16,8 +16,8 @@
         position: fixed
         left: 50%
         top: 50%
-        width: 0.4vw
-        height: 0.4vw
+        width: 0.3vw
+        height: 0.3vw
         margin: -0.2vw 0 0 9.8vw
         animation: ease 200s alternate infinite
         pointer-events: none
