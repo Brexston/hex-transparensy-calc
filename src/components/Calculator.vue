@@ -4,7 +4,7 @@
             <div class="calculator__color-input" :class="{error: erorrInput}">
                 <input type="text" autofocus v-model="color" placeholder="#FDC420">
             </div>
-            <div class="calculator__color-copy" :class="{active: copyBtn}" @click="copyColor">Скопировать</div>
+            <div class="calculator__color-copy" :class="{active: copyBtn}" @click="copyColor">{{copyText}}</div>
         </div>
         <div class="calculator__percent">
             <div class="calculator__percent-item" :class="{active: percent == this.value}"  @click="this.value = percent" v-for="percent in percentList" :key="percent">{{percent}}</div>
@@ -31,9 +31,10 @@ export default {
         return {
             color: '',
             value: 100,
-            percentList: ['10','20','30','40','50','60','70','80','90'],
+            percentList: ['10','20','30','40','50','60','70','80','90','100'],
             erorrInput: false,
-            copyBtn: false
+            copyBtn: false,
+            copyText: 'Скопировать'
         }
     },
 
@@ -47,7 +48,6 @@ export default {
                 const hex = (alpha + 0x10000).toString(16).substr(-2)
                 
                 if(this.color.length === 4) {
-                    console.log(this.color)
                     this.color = this.color.split("").map((item) => {
                         if(item == '#') return item
                         return item + item
@@ -67,6 +67,11 @@ export default {
 		copyColor(event) {
             event.target.previousElementSibling.querySelector('input').select()
             document.execCommand("copy")
+            this.copyText = 'Скопировано'
+            setTimeout(() => {
+                this.copyText = 'Скопировать'
+            }, 2000) 
+
 		},
         
     }
